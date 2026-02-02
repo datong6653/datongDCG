@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>傳染病防治業務報告 - 114年成果與115年規劃</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #4caf50;
+            --accent-color: #ff9800;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #212529;
+            --font-size-base: 18px;
+            --font-size-large: 24px;
+            --font-size-xl: 32px;
+            --line-height: 1.8;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: "Microsoft JhengHei", "Segoe UI", Arial, sans-serif;
+            font-size: var(--font-size-base);
+            line-height: var(--line-height);
+            color: var(--text-color);
+            background-color: white;
+            overflow-x: hidden;
+        }
+        
+        /* 高齡友善設定 */
+        .high-contrast {
+            color: #000000 !important;
+            background-color: #ffffff !important;
+        }
+        
+        .large-text {
+            font-size: calc(var(--font-size-base) * 1.2) !important;
+        }
+        
+        .extra-large-text {
+            font-size: calc(var(--font-size-base) * 1.4) !important;
+        }
+        
+        /* 簡報容器 */
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 頁面樣式 */
+        .slide {
+            display: none;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            min-height: 80vh;
+        }
+        
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 標題樣式 */
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: var(--font-size-xl);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+        
+        h2 {
+            font-size: calc(var(--font-size-large) * 1.1);
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            font-size: var(--font-size-large);
+            color: var(--dark-color);
+        }
+        
+        /* 導航控制 */
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        .nav-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* 目錄樣式 */
+        .toc {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .toc-item {
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toc-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background-color: #e9f7fe;
+        }
+        
+        .toc-item .number {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        /* 表格樣式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: var(--font-size-base);
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-align: left;
+            padding: 15px;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: #f0f7ff;
+        }
+        
+        /* 數據可視化 */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 30px 0;
+        }
+        
+        .data-highlight {
+            background-color: #f0f7ff;
+            border-left: 5px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .data-highlight h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        /* 進度指示器 */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        /* 可訪問性工具 */
+        .accessibility-tools {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .accessibility-btn {
+            background-color: var(--dark-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .accessibility-btn:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        /* 頁碼顯示 */
+        .page-indicator {
+            text-align: center;
+            font-size: 18px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .presentation-container {
+                padding: 10px;
+            }
+            
+            .slide {
+                padding: 20px;
+            }
+            
+            .toc {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                width: 90%;
+                justify-content: space-between;
+            }
+            
+            .accessibility-tools {
+                top: 10px;
+                right: 10px;
+            }
+        }
+        
+        /* 列印樣式 */
+        @media print {
+            .navigation, .accessibility-tools {
+                display: none;
+            }
+            
+            .slide {
+                display: block !important;
+                box-shadow: none;
+                page-break-after: always;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 可訪問性工具列 -->
+    <div class="accessibility-tools">
+        <button class="accessibility-btn" id="contrastToggle" title="高對比度模式">
+            <i class="fas fa-adjust"></i>
+        </button>
+        <button class="accessibility-btn" id="textSizeToggle" title="放大文字">
+            <i class="fas fa-text-height"></i>
+        </button>
+        <button class="accessibility-btn" id="printBtn" title="列印簡報">
+            <i class="fas fa-print"></i>
+        </button>
+    </div>
+    
+    <!-- 簡報內容容器 -->
+    <div class="presentation-container">
+        <!-- 進度指示器 -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <!-- 簡報頁面開始 -->
+        <div class="slide active" id="slide1">
+            <div style="text-align: center; padding: 60px 0;">
+                <h1 style="font-size: 42px; border-bottom: none; color: var(--primary-color);">
+                    傳染病防治業務報告
+                </h1>
+                <h2 style="border-left: none; margin-top: 40px; font-size: 36px;">
+                    114年成果與115年規劃
+                </h2>
+                <div style="margin-top: 80px;">
+                    <h3>報告單位：個案管理組</h3>
+                    <h3>報告人：林明憲</h3>
+                </div>
+                <div style="margin-top: 100px; color: #666; font-size: 20px;">
+                    <p>互動式網頁簡報 - 使用下方按鈕或方向鍵瀏覽</p>
+                    <p style="margin-top: 10px;">
+                        <i class="fas fa-arrow-left"></i> 
+                        <span style="margin: 0 15px;">瀏覽簡報</span> 
+                        <i class="fas fa-arrow-right"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="page-indicator">第 1 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 目錄頁 -->
+        <div class="slide" id="slide2">
+            <h1>簡報大綱</h1>
+            <div class="toc">
+                <div class="toc-item" data-slide="3">
+                    <span class="number">1</span>
+                    <h3>業務分配表</h3>
+                    <p>傳染病防治、宣導、物資管理及登革熱防治業務分配</p>
+                </div>
+                <div class="toc-item" data-slide="4">
+                    <span class="number">2</span>
+                    <h3>114年業務指標成果及未達標檢討</h3>
+                    <p>四大業務指標成果與防疫物資管理現況</p>
+                </div>
+                <div class="toc-item" data-slide="5">
+                    <span class="number">3</span>
+                    <h3>115年業務指標及規劃</h3>
+                    <p>115年業務指標調整與規劃</p>
+                </div>
+                <div class="toc-item" data-slide="6">
+                    <span class="number">4</span>
+                    <h3>114年來文計畫總覽</h3>
+                    <p>傳染病衛教、M痘、病毒性肝炎宣導計畫</p>
+                </div>
+                <div class="toc-item" data-slide="7">
+                    <span class="number">5</span>
+                    <h3>114年來文計畫成果</h3>
+                    <p>宣導場次與人次統計、防疫工作隊成果</p>
+                </div>
+                <div class="toc-item" data-slide="8">
+                    <span class="number">6</span>
+                    <h3>115年來文計畫業務規劃</h3>
+                    <p>115年各項宣導與工作隊規劃</p>
+                </div>
+                <div class="toc-item" data-slide="9">
+                    <span class="number">7</span>
+                    <h3>登革熱防治業務</h3>
+                    <p>疫情彙整、為民服務、社區調查與裝備整備</p>
+                </div>
+                <div class="toc-item" data-slide="10">
+                    <span class="number">8</span>
+                    <h3>115年同仁需協助事項</h3>
+                    <p>登革熱密調作業時間與社區活動宣導協助</p>
+                </div>
+            </div>
+            <div class="page-indicator">第 2 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 業務分配表 -->
+        <div class="slide" id="slide3">
+            <h1>一、業務分配表</h1>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-shield-virus"></i> 傳染病防治</h4>
+                <p>登革熱、COVID-19、第一、二、五及其他類法定傳染病業務、腹瀉群聚(社區)、年度傳染病疫調單歸檔</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-bullhorn"></i> 傳染病宣導</h4>
+                <p>傳染病防治宣導防治講座本區所有學校宣導、含M痘、病毒性肝炎等</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-archive"></i> 防疫物資管理</h4>
+                <p>個人防護裝備、防疫藥品器材、公費克流感及COVID-19藥物查核</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-mosquito"></i> 登革熱防治</h4>
+                <p>社區病媒蚊密度調查、校園登革熱宣導及密度調查、密調裝備用品整備、防疫志工隊管理、訓練與規劃服務項目</p>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <canvas id="businessDistributionChart"></canvas>
+            </div>
+            
+            <div class="page-indicator">第 3 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 114年業務指標成果 -->
+        <div class="slide" id="slide4">
+            <h1>二、114年業務指標成果及未達標檢討</h1>
+            
+            <h2>B3 傳染病通報個案疫調完成率及完整性 (5分)</h2>
+            <p><strong>完成率(3分):</strong> 100%得3分；90%得1.5分；≥80%得0.5分</p>
+            <p><strong>完整性(2分):</strong> 疫調內容有遺漏每案扣0.2分</p>
+            <p><strong>統計期間:</strong> 113年12月1日至114年11月30日</p>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-chart-line"></i> 成果</h4>
+                <p>本年度共處理 <strong>64案</strong>，其中第二類：49案、第三類：13案、第四類：2案。</p>
+                <p>第二類疾病通報量由大至小分別為：<strong>登革熱 19案</strong> → <strong>急性病毒性A型肝炎 12案</strong> → <strong>麻疹 8案</strong> → <strong>阿米巴性痢疾 6案</strong>。</p>
+                <p>其中以【食物或飲水傳染】的A肝與阿米巴通報案量都有增加，也因此處理過A肝個案之擴大疫調2次。</p>
+                <p style="color: var(--accent-color);"><i class="fas fa-hands-wash"></i> 請各位飯前飯後要記得洗手~</p>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <canvas id="caseTypeChart"></canvas>
+            </div>
+            
+            <h2 style="margin-top: 40px;">B4 公費流感及口服COVID-19藥劑合約機構查核 (3分)</h2>
+            <p><strong>時效性(1.4分):</strong> 逾期繳交一項一次扣0.2分</p>
+            <p><strong>完整性(1.6分):</strong> 內容有缺漏或錯誤則扣0.2分</p>
+            <p><strong>統計期間:</strong> 113年9月30日至114年9月30日</p>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-clipboard-check"></i> 成果</h4>
+                <p>目前合約院所流感14家，COVID-19抗病毒藥劑合約4家，皆依照時間完成查核及回復。</p>
+                <p>另外第3季開始增加將查核結果登錄SIMS系統。</p>
+            </div>
+            
+            <h2 style="margin-top: 40px;">B5 SQMS追蹤完成率 (5分)</h2>
+            <p><strong>計算方式:</strong> 每月檢核，逾期未結案者每筆扣0.1分</p>
+            <p><strong>統計期間:</strong> 113年12月1日至114年11月30日</p>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-user-check"></i> 成果</h4>
+                <p>於SQMS有症狀之入境旅客，本區計有 <strong>187名</strong>，全數在追蹤關懷期限內完成結案。</p>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <canvas id="sqmsChart"></canvas>
+            </div>
+            
+            <h2 style="margin-top: 40px;">B6 麻疹及德國麻疹確定個案接觸者發燒或出疹後就醫 (5分)</h2>
+            <p><strong>計算方式:</strong> 列管中之麻疹接觸者，因出現麻疹疑似症狀未經感控安排而自行就醫，且經醫院通報為疑似麻疹或德國麻疹病例，每1案扣0.5分，扣分上限5分。</p>
+            <p><strong>統計期間:</strong> 113年12月1日至114年11月30日止</p>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-virus"></i> 成果</h4>
+                <p>114年麻疹個案共計 <strong>8案</strong>（疑似病例6案、確定病例2案（境外移入）），健康追蹤關懷接觸者人數共 <strong>71人</strong>，監測期間皆無自行就醫。</p>
+            </div>
+            
+            <h2 style="margin-top: 40px;">防疫物資管理</h2>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-head-side-mask"></i> 個人防護裝備</h4>
+                <p>全身式防護衣 (件)、防水隔離衣 (件)、N95口罩 (片)、外科等級口罩 (片)、檢驗手套 (雙)</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-pump-medical"></i> 防疫藥品器材</h4>
+                <p>酒精、漂白水、殺蟲劑(噴藥罐)、滅孑孓藥(環境用藥)</p>
+            </div>
+            
+            <div class="data-highlight" style="background-color: #fff8e1; border-left-color: var(--accent-color);">
+                <h4><i class="fas fa-exclamation-triangle"></i> 現況注意</h4>
+                <p>經盤點部分個人防護裝備將在6個月內屆期失效，申領作業刻正進行中，預計三分之二補齊。</p>
+            </div>
+            
+            <h2 style="margin-top: 40px;">未達指標檢討</h2>
+            <div class="data-highlight" style="background-color: #e8f5e9; border-left-color: var(--secondary-color);">
+                <h4><i class="fas fa-check-circle"></i> 無未達標項目</h4>
+                <p>本年度所有指標均達成，無未達標項目。</p>
+            </div>
+            
+            <div class="page-indicator">第 4 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 115年業務指標及規劃 -->
+        <div class="slide" id="slide5">
+            <h1>三、115年業務指標及規劃</h1>
+            
+            <h2>B3 公費流感及口服COVID-19抗病毒藥劑合約醫療機構查核回復時效性及完整性</h2>
+            <div class="data-highlight">
+                <h4><i class="fas fa-chart-bar"></i> 調整內容</h4>
+                <p><strong>配分增加至5分</strong>，原3分。</p>
+                <p><strong>統計期間調整:</strong> 自114年10月1日至115年9月30日止。</p>
+                <p><strong>規劃:</strong> 依期程辦理查核作業每季回復。</p>
+            </div>
+            
+            <h2 style="margin-top: 40px;">B4 SQMS追蹤完成率</h2>
+            <div class="data-highlight">
+                <h4><i class="fas fa-calendar-alt"></i> 調整內容</h4>
+                <p><strong>統計期間調整:</strong> 114年12月1日至115年11月30日止。</p>
+                <p><strong>規劃:</strong> 持續維持追蹤關懷與即時結案。</p>
+            </div>
+            
+            <h2 style="margin-top: 40px;">B5 麻疹及德國麻疹確定個案接觸者發燒或出疹後就醫</h2>
+            <div class="data-highlight">
+                <h4><i class="fas fa-edit"></i> 調整內容</h4>
+                <p><strong>統計日期調整:</strong> 自114年12月1日至115年11月30日止。</p>
+                <p><strong>計算方式微調:</strong> 列管中之麻疹【及德國麻疹】接觸者，因出現【發燒或出疹等】疑似症狀未經感控安排而自行就醫，且經醫院通報為疑似麻疹或德國麻疹病例，每1案扣0.5分，扣分上限5分。</p>
+                <p><strong>規劃:</strong> 接續辦理。</p>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <h3>115年業務指標調整重點</h3>
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 20px;">
+                    <div style="text-align: center; padding: 20px; background: #f0f7ff; border-radius: 10px; width: 200px; margin: 10px;">
+                        <div style="font-size: 36px; color: var(--primary-color); font-weight: bold;">B3</div>
+                        <p>配分增加<br>3分 → 5分</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f0f7ff; border-radius: 10px; width: 200px; margin: 10px;">
+                        <div style="font-size: 36px; color: var(--primary-color); font-weight: bold;">B4</div>
+                        <p>統計期間<br>調整</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f0f7ff; border-radius: 10px; width: 200px; margin: 10px;">
+                        <div style="font-size: 36px; color: var(--primary-color); font-weight: bold;">B5</div>
+                        <p>計算方式<br>微調</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page-indicator">第 5 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 114年來文計畫總覽 -->
+        <div class="slide" id="slide6">
+            <h1>四、114年來文計畫總覽</h1>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-comment-medical"></i> 傳染病衛教宣導場</h4>
+                <p>傳染病防治衛生教育宣導年度目標場次20場，每季繳交傳染病防治衛生教育宣導成果表（含簽到表或參加總人數證明）</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-virus"></i> M痘衛教宣導</h4>
+                <p>規劃結合社區或學校進行M痘衛教宣導，總目標場次114年至少累計8場，建議學校部分可優先選擇大專院校或高中職。</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-liver"></i> 病毒性肝炎</h4>
+                <p>規劃結合社區或學校進行病毒性肝炎衛教宣導，總目標場次114年至少累計3場，建議學校部分可優先選擇大專院校或高中職。</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-users-medical"></i> 防疫工作隊招募培訓及登革熱/屈公病校園防疫宣導</h4>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li>招募隊員至少1隊/25人</li>
+                    <li>防疫衛生課程教育訓練4小時，（其中新興傳染病及蟲媒傳染病教育訓練各至少1小時）</li>
+                    <li>實際參與1次病媒蚊調查/完成防疫相關服務8小時</li>
+                    <li>選定至少2所學校辦理，認識登革熱/屈公病等蟲媒傳播病之傳播途徑、病媒蚊習性，並於校園進行病媒蚊密度調查。</li>
+                </ol>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <canvas id="planTargetsChart"></canvas>
+            </div>
+            
+            <div class="page-indicator">第 6 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 114年來文計畫成果 -->
+        <div class="slide" id="slide7">
+            <h1>五、114年來文計畫成果</h1>
+            
+            <h2>傳染病防治宣導 (含M痘與病毒性肝炎)</h2>
+            <div class="data-highlight">
+                <h4><i class="fas fa-chart-pie"></i> 總成果</h4>
+                <p>114年度結合社區與校園共完成辦理 <strong>46場次</strong>，總計宣導 <strong>2,498人次</strong>。</p>
+            </div>
+            
+            <h3>傳染病宣導</h3>
+            <table>
+                <tr>
+                    <th>項目</th>
+                    <th>目標場次</th>
+                    <th>完成場次</th>
+                    <th>宣導人次</th>
+                    <th>場地分布</th>
+                </tr>
+                <tr>
+                    <td>傳染病宣導</td>
+                    <td>20場</td>
+                    <td>20場</td>
+                    <td>1,405人次</td>
+                    <td>學校6場，社區14場</td>
+                </tr>
+                <tr>
+                    <td>M痘衛教宣導</td>
+                    <td>8場</td>
+                    <td>9場</td>
+                    <td>1,032人次</td>
+                    <td>學校2場，社區7場</td>
+                </tr>
+                <tr>
+                    <td>病毒性肝炎</td>
+                    <td>3場</td>
+                    <td>4場</td>
+                    <td>421人次</td>
+                    <td>學校1場，社區3場</td>
+                </tr>
+            </table>
+            
+            <div style="margin-top: 30px;">
+                <canvas id="promotionResultsChart"></canvas>
+            </div>
+            
+            <h3 style="margin-top: 40px;">宣導成效亮點</h3>
+            <div class="data-highlight" style="background-color: #fff3e0; border-left-color: var(--accent-color);">
+                <h4><i class="fas fa-graduation-cap"></i> M痘前後測驗成效</h4>
+                <p>於重慶國中辦理前後測，選定2個班、44名學生參與。</p>
+                <p>前測平均：<strong>76分</strong> → 後測平均：<strong>91分</strong></p>
+                <p>學習成效顯著提升，顯示宣導活動有效。</p>
+            </div>
+            
+            <h3 style="margin-top: 40px;">防疫工作隊招募培訓及登革熱/屈公病校園防疫宣導</h3>
+            <div class="data-highlight">
+                <h4><i class="fas fa-user-plus"></i> 工作隊招募成果</h4>
+                <p>5月已完成招募並增員5名，目前配置1隊/25名成員。</p>
+                <p>4月及8月合計4小時共辦理2場教育訓練，中心志工共57人參加。</p>
+                <p>定期安排志工社區防疫相關活動(校園、社區密調、保健活動及疫苗接種等。)</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-school"></i> 登革熱/屈公病校園防疫宣導</h4>
+                <p><strong>防疫小尖兵：</strong> 3月-大同國小，9月-太平國小。</p>
+                <p>皆完成辦理蟲媒傳染病知能訓練及校園密調實地作業。</p>
+                <p>其中太平國小首次以<strong>互動式教學網站</strong>，邊玩邊學來獲得傳染病基本認知。</p>
+            </div>
+            
+            <div class="page-indicator">第 7 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 115年來文計畫業務規劃 -->
+        <div class="slide" id="slide8">
+            <h1>六、115年來文計畫業務規劃</h1>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-comment-medical"></i> 傳染病衛教宣導場 (尚未來文)</h4>
+                <p>傳染病防治衛生教育宣導年度目標場次20場，每季繳交傳染病防治衛生教育宣導成果表（含簽到表或參加總人數證明）</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-virus"></i> M痘衛教宣導</h4>
+                <p>規劃結合社區或學校進行M痘衛教宣導，總目標場次至少累計8場，建議學校部分可優先選擇大專院校或高中職。</p>
+                <p>比照往年辦理，惟校園擇1所高中辦理，預計規劃明倫高中及靜修女中。</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-liver"></i> 病毒性肝炎 (尚未來文)</h4>
+                <p>規劃結合社區或學校進行病毒性肝炎衛教宣導，總目標場次至少累計3場，建議學校部分可優先選擇大專院校或高中職。</p>
+            </div>
+            
+            <h3 style="margin-top: 40px;">防疫工作隊招募培訓及登革熱/屈公病校園防疫宣導</h3>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-user-plus"></i> 招募隊員至少1隊/30人</h4>
+                <p>目前防疫工作隊成員25人，本年度須再增加5名，預計由現有隊員推薦，如中心同仁有推薦人選可以直接跟我或志工承辦人聯繫。</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-chalkboard-teacher"></i> 防疫衛生課程教育訓練4小時</h4>
+                <p>（其中新興傳染病及蟲媒傳染病教育訓練各至少1小時）</p>
+                <p>已規劃在4月與9月各辦理1場共4小時防疫相關課程。</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-mosquito"></i> 實際參與1次病媒蚊調查/完成防疫相關服務8小時</h4>
+                <p>依期程安排志工參與並完成目標。</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-school"></i> 選定至少2所學校辦理</h4>
+                <p>認識登革熱/屈公病等蟲媒傳播病之傳播途徑、病媒蚊習性，並於校園進行病媒蚊密度調查。</p>
+                <p><strong>洽談中</strong></p>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <h3>115年工作隊擴充目標</h3>
+                <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 48px; color: var(--primary-color); font-weight: bold;">25</div>
+                        <p>現有人數</p>
+                    </div>
+                    <div style="font-size: 36px; margin: 0 20px; color: var(--accent-color);">→</div>
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 48px; color: var(--secondary-color); font-weight: bold;">30</div>
+                        <p>目標人數</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page-indicator">第 8 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 登革熱防治業務 -->
+        <div class="slide" id="slide9">
+            <h1>七、登革熱防治業務</h1>
+            
+            <h2>年度疫情彙整</h2>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin: 20px 0;">
+                <div style="text-align: center; background: #e8f5e9; padding: 20px; border-radius: 10px; width: 200px; margin: 10px;">
+                    <div style="font-size: 36px; color: var(--secondary-color); font-weight: bold;">16例</div>
+                    <p>通報病例<br>(本土+境外)</p>
+                </div>
+                <div style="text-align: center; background: #ffebee; padding: 20px; border-radius: 10px; width: 200px; margin: 10px;">
+                    <div style="font-size: 36px; color: #f44336; font-weight: bold;">0例</div>
+                    <p>確定病例<br>(本土)</p>
+                </div>
+                <div style="text-align: center; background: #e3f2fd; padding: 20px; border-radius: 10px; width: 200px; margin: 10px;">
+                    <div style="font-size: 36px; color: var(--primary-color); font-weight: bold;">3例</div>
+                    <p>確定病例<br>(境外)</p>
+                </div>
+            </div>
+            
+            <h2>為民服務</h2>
+            <div class="data-highlight">
+                <h4><i class="fas fa-comments"></i> 登革熱陳情案件</h4>
+                <p><strong>12案</strong>，皆已即時查核並向民眾提供登革熱防治及孳生源清除相關衛教資訊。</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-newspaper"></i> 輿情案件</h4>
+                <p><strong>1案</strong>，此案為雙連里里長提案至「市長與里長有約」，主訴本區興城街1巷弄兩側牆面及水溝蓋堆積雜物，要求相關單位介入處理；經多次聯合會勘，里長同意轉由市容會報持續監測。</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-clipboard-list"></i> 市容會報</h4>
+                <p><strong>總案數 2案</strong>，已結案 1案，續追案 1案(興城街1巷)。</p>
+            </div>
+            
+            <h2>社區病媒蚊密度調查</h2>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin: 20px 0;">
+                <div style="text-align: center; background: #fff8e1; padding: 20px; border-radius: 10px; width: 250px; margin: 10px;">
+                    <div style="font-size: 36px; color: var(--accent-color); font-weight: bold;">187里次</div>
+                    <p>累計調查</p>
+                </div>
+                <div style="text-align: center; background: #f3e5f5; padding: 20px; border-radius: 10px; width: 250px; margin: 10px;">
+                    <div style="font-size: 36px; color: #9c27b0; font-weight: bold;">7,947戶</div>
+                    <p>檢查與宣導</p>
+                </div>
+                <div style="text-align: center; background: #e0f2f1; padding: 20px; border-radius: 10px; width: 250px; margin: 10px;">
+                    <div style="font-size: 36px; color: #009688; font-weight: bold;">46場次</div>
+                    <p>同仁實務回訓</p>
+                </div>
+            </div>
+            
+            <div class="data-highlight" style="background-color: #e8f5e9;">
+                <p><i class="fas fa-hands-helping"></i> 感謝同仁配合~</p>
+            </div>
+            
+            <h2>密調裝備用品整備</h2>
+            <p>登革熱密調包已於6月18日完成盤點，除11名護理師及3名防疫人員各持有1組密調包外，另有6組密調包備用，可供其他同仁或緊急時借用。</p>
+            
+            <div style="margin-top: 20px; overflow-x: auto;">
+                <table>
+                    <tr>
+                        <th>編號</th>
+                        <th>名稱</th>
+                        <th>中心儲備量</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>密調包含裝備（組）</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>密調包（個）</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>防蚊液（罐）</td>
+                        <td>230</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>清潔刷（隻）</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>環境用藥-蘇力菌</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="data-highlight" style="margin-top: 20px;">
+                <h4><i class="fas fa-check-circle"></i> 庫存評估</h4>
+                <p>本中心密調裝備儲備量明細表如上，經評估目前庫存量足夠。</p>
+            </div>
+            
+            <h2>防疫志工隊管理、訓練與規劃服務項目</h2>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin: 20px 0;">
+                <div style="text-align: center; background: #e3f2fd; padding: 20px; border-radius: 10px; width: 200px; margin: 10px;">
+                    <div style="font-size: 36px; color: var(--primary-color); font-weight: bold;">25名</div>
+                    <p>防疫志工</p>
+                </div>
+                <div style="text-align: center; background: #fff3e0; padding: 20px; border-radius: 10px; width: 200px; margin: 10px;">
+                    <div style="font-size: 36px; color: var(--accent-color); font-weight: bold;">4小時</div>
+                    <p>人均訓練時數</p>
+                </div>
+                <div style="text-align: center; background: #e8f5e9; padding: 20px; border-radius: 10px; width: 200px; margin: 10px;">
+                    <div style="font-size: 36px; color: var(--secondary-color); font-weight: bold;">645小時</div>
+                    <p>總服務時數</p>
+                </div>
+            </div>
+            
+            <div class="page-indicator">第 9 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 115年同仁需協助事項 -->
+        <div class="slide" id="slide10">
+            <h1>八、115年同仁需協助事項</h1>
+            
+            <h2>登革熱密調作業時間</h2>
+            <div class="data-highlight">
+                <h4><i class="fas fa-calendar-day"></i> 社區密調</h4>
+                <p>公衛護理同仁的社區密調將安排在 <strong>4月及9月</strong> (上、下半年各1次)。</p>
+            </div>
+            
+            <div class="data-highlight">
+                <h4><i class="fas fa-school"></i> 校園密調</h4>
+                <p>校園密調則會配合學校的課程安排在 <strong>7月</strong> 進行。</p>
+            </div>
+            
+            <div class="data-highlight" style="background-color: #fff3e0; border-left-color: var(--accent-color);">
+                <h4><i class="fas fa-clock"></i> 行程調整提醒</h4>
+                <p>已將行程都排上班表，<strong>如有需要更改，最遲請於3天前告知承辦人。</strong></p>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <canvas id="surveyScheduleChart"></canvas>
+            </div>
+            
+            <h2 style="margin-top: 40px;">社區活動宣導協助</h2>
+            <div class="data-highlight" style="text-align: center;">
+                <h4><i class="fas fa-hands-helping"></i> 請同仁協助以下事項</h4>
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 20px;">
+                    <div style="text-align: center; padding: 20px; background: #e8f5e9; border-radius: 10px; width: 200px; margin: 10px;">
+                        <i class="fas fa-newspaper" style="font-size: 48px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+                        <p><strong>張貼宣導海報</strong></p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #e3f2fd; border-radius: 10px; width: 200px; margin: 10px;">
+                        <i class="fas fa-camera" style="font-size: 48px; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <p><strong>提供活動照片</strong><br>(1-2張)</p>
+                    </div>
+                </div>
+                <p style="margin-top: 30px; font-size: 20px;">感謝您的協助與支持！</p>
+            </div>
+            
+            <div class="page-indicator">第 10 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 感謝頁 -->
+        <div class="slide" id="slide11">
+            <div style="text-align: center; padding: 100px 0;">
+                <h1 style="border-bottom: none; font-size: 48px; color: var(--primary-color);">
+                    感謝聆聽
+                </h1>
+                <div style="margin-top: 80px;">
+                    <h2 style="border-left: none; font-size: 36px;">
+                        齊心協力，守護社區健康
+                    </h2>
+                </div>
+                <div style="margin-top: 100px;">
+                    <p style="font-size: 24px;">報告單位：個案管理組</p>
+                    <p style="font-size: 24px;">報告人：林明憲</p>
+                </div>
+                <div style="margin-top: 120px; color: #666;">
+                    <p>互動式網頁簡報 - 114年成果與115年規劃</p>
+                    <p>可使用瀏覽器的列印功能保存本簡報</p>
+                </div>
+            </div>
+            <div class="page-indicator">第 11 頁 / 共 12 頁</div>
+        </div>
+        
+        <!-- 互動問卷頁 (額外新增) -->
+        <div class="slide" id="slide12">
+            <h1>簡報回饋與意見</h1>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="data-highlight" style="text-align: center;">
+                    <h3><i class="fas fa-comment-dots"></i> 歡迎提供寶貴意見</h3>
+                    <p>為使未來業務報告更符合需求，請提供您的建議：</p>
+                </div>
+                
+                <div style="margin-top: 40px;">
+                    <h4>1. 本簡報內容是否清晰易懂？</h4>
+                    <div style="display: flex; gap: 20px; margin-top: 15px;">
+                        <button class="feedback-btn" data-feedback="clarity" data-value="5">非常清楚</button>
+                        <button class="feedback-btn" data-feedback="clarity" data-value="4">清楚</button>
+                        <button class="feedback-btn" data-feedback="clarity" data-value="3">普通</button>
+                        <button class="feedback-btn" data-feedback="clarity" data-value="2">需改進</button>
+                        <button class="feedback-btn" data-feedback="clarity" data-value="1">不清楚</button>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px;">
+                    <h4>2. 哪部分內容對您最有幫助？</h4>
+                    <div style="margin-top: 15px;">
+                        <label style="display: block; margin-bottom: 10px;">
+                            <input type="checkbox" class="helpful-checkbox" value="indicators"> 業務指標成果
+                        </label>
+                        <label style="display: block; margin-bottom: 10px;">
+                            <input type="checkbox" class="helpful-checkbox" value="plans"> 來文計畫成果與規劃
+                        </label>
+                        <label style="display: block; margin-bottom: 10px;">
+                            <input type="checkbox" class="helpful-checkbox" value="dengue"> 登革熱防治業務
+                        </label>
+                        <label style="display: block; margin-bottom: 10px;">
+                            <input type="checkbox" class="helpful-checkbox" value="visualization"> 數據視覺化圖表
+                        </label>
+                        <label style="display: block; margin-bottom: 10px;">
+                            <input type="checkbox" class="helpful-checkbox" value="all"> 全部內容
+                        </label>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px;">
+                    <h4>3. 其他建議</h4>
+                    <textarea id="suggestionText" placeholder="請輸入您的建議..." style="width: 100%; height: 150px; padding: 15px; font-size: 16px; border: 1px solid #ddd; border-radius: 5px; margin-top: 10px;"></textarea>
+                </div>
+                
+                <div style="text-align: center; margin-top: 50px;">
+                    <button id="submitFeedback" style="background-color: var(--primary-color); color: white; border: none; padding: 15px 40px; font-size: 18px; border-radius: 50px; cursor: pointer;">
+                        提交回饋
+                    </button>
+                </div>
+                
+                <div id="feedbackThankYou" style="display: none; text-align: center; margin-top: 30px; padding: 20px; background-color: #e8f5e9; border-radius: 10px;">
+                    <h3><i class="fas fa-check-circle"></i> 感謝您的寶貴意見！</h3>
+                    <p>您的回饋將有助於我們改進未來的報告。</p>
+                </div>
+            </div>
+            
+            <div class="page-indicator">第 12 頁 / 共 12 頁</div>
+        </div>
+        
+    </div>
+    
+    <!-- 導航控制 -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" title="上一頁">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-btn" id="tocBtn" title="目錄">
+            <i class="fas fa-bars"></i>
+        </button>
+        <button class="nav-btn" id="nextBtn" title="下一頁">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <script>
+        // 簡報頁面控制
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlide = 0;
+        
+        // 更新進度條
+        function updateProgressBar() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            
+            // 更新頁碼顯示
+            document.querySelectorAll('.page-indicator').forEach((indicator, index) => {
+                if(index === currentSlide) {
+                    indicator.textContent = `第 ${currentSlide + 1} 頁 / 共 ${totalSlides} 頁`;
+                }
+            });
+        }
+        
+        // 顯示指定頁面
+        function showSlide(index) {
+            // 確保索引在範圍內
+            if (index < 0) index = 0;
+            if (index >= totalSlides) index = totalSlides - 1;
+            
+            // 隱藏所有頁面
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // 顯示當前頁面
+            slides[index].classList.add('active');
+            currentSlide = index;
+            
+            // 更新按鈕狀態
+            document.getElementById('prevBtn').disabled = (currentSlide === 0);
+            document.getElementById('nextBtn').disabled = (currentSlide === totalSlides - 1);
+            
+            // 更新進度條
+            updateProgressBar();
+            
+            // 滾動到頂部
+            window.scrollTo(0, 0);
+        }
+        
+        // 初始化
+        showSlide(0);
+        
+        // 事件監聽器
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+        
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+        
+        document.getElementById('tocBtn').addEventListener('click', () => {
+            showSlide(1); // 目錄頁是第二頁
+        });
+        
+        // 目錄項目點擊事件
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const slideIndex = parseInt(item.getAttribute('data-slide')) - 1;
+                showSlide(slideIndex);
+            });
+        });
+        
+        // 鍵盤控制
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                showSlide(currentSlide - 1);
+            } else if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+                showSlide(currentSlide + 1);
+            } else if (e.key === 'Home') {
+                showSlide(0);
+            } else if (e.key === 'End') {
+                showSlide(totalSlides - 1);
+            }
+        });
+        
+        // 可訪問性功能
+        document.getElementById('contrastToggle').addEventListener('click', () => {
+            document.body.classList.toggle('high-contrast');
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.toggle('high-contrast');
+            });
+            
+            // 更新按鈕提示
+            const contrastBtn = document.getElementById('contrastToggle');
+            if (document.body.classList.contains('high-contrast')) {
+                contrastBtn.title = "切換回普通模式";
+                contrastBtn.innerHTML = '<i class="fas fa-adjust"></i>';
+            } else {
+                contrastBtn.title = "高對比度模式";
+                contrastBtn.innerHTML = '<i class="fas fa-adjust"></i>';
+            }
+        });
+        
+        let textSizeLevel = 0;
+        document.getElementById('textSizeToggle').addEventListener('click', () => {
+            const body = document.body;
+            body.classList.remove('large-text', 'extra-large-text');
+            
+            textSizeLevel = (textSizeLevel + 1) % 3;
+            
+            if (textSizeLevel === 1) {
+                body.classList.add('large-text');
+                document.getElementById('textSizeToggle').title = "文字大小: 大";
+            } else if (textSizeLevel === 2) {
+                body.classList.add('extra-large-text');
+                document.getElementById('textSizeToggle').title = "文字大小: 特大";
+            } else {
+                document.getElementById('textSizeToggle').title = "放大文字";
+            }
+        });
+        
+        // 列印功能
+        document.getElementById('printBtn').addEventListener('click', () => {
+            window.print();
+        });
+        
+        // 回饋功能
+        document.querySelectorAll('.feedback-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 移除同類按鈕的active狀態
+                const feedbackType = this.getAttribute('data-feedback');
+                document.querySelectorAll(`.feedback-btn[data-feedback="${feedbackType}"]`).forEach(b => {
+                    b.style.backgroundColor = '';
+                    b.style.color = '';
+                });
+                
+                // 設定當前按鈕為active
+                this.style.backgroundColor = var('--primary-color');
+                this.style.color = 'white';
+            });
+        });
+        
+        document.getElementById('submitFeedback').addEventListener('click', function() {
+            const thankYouDiv = document.getElementById('feedbackThankYou');
+            thankYouDiv.style.display = 'block';
+            
+            // 清空表單
+            document.querySelectorAll('.feedback-btn').forEach(btn => {
+                btn.style.backgroundColor = '';
+                btn.style.color = '';
+            });
+            
+            document.querySelectorAll('.helpful-checkbox').forEach(cb => {
+                cb.checked = false;
+            });
+            
+            document.getElementById('suggestionText').value = '';
+            
+            // 3秒後隱藏感謝訊息
+            setTimeout(() => {
+                thankYouDiv.style.display = 'none';
+            }, 3000);
+        });
+        
+        // 圖表初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 業務分配圖
+            const businessCtx = document.getElementById('businessDistributionChart').getContext('2d');
+            new Chart(businessCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['傳染病防治', '傳染病宣導', '防疫物資管理', '登革熱防治'],
+                    datasets: [{
+                        data: [30, 25, 20, 25],
+                        backgroundColor: [
+                            '#2c5aa0',
+                            '#4caf50',
+                            '#ff9800',
+                            '#9c27b0'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: '業務分配比例',
+                            font: {
+                                size: 18
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 案件類型圖
+            const caseTypeCtx = document.getElementById('caseTypeChart').getContext('2d');
+            new Chart(caseTypeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['登革熱', 'A型肝炎', '麻疹', '阿米巴痢疾'],
+                    datasets: [{
+                        label: '案件數',
+                        data: [19, 12, 8, 6],
+                        backgroundColor: '#2c5aa0',
+                        borderColor: '#1e3a6b',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: '第二類傳染病通報案件數',
+                            font: {
+                                size: 18
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // SQMS圖表
+            const sqmsCtx = document.getElementById('sqmsChart').getContext('2d');
+            new Chart(sqmsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    datasets: [{
+                        label: 'SQMS追蹤個案數',
+                        data: [12, 15, 18, 14, 16, 20, 18, 15, 12, 14, 16, 17],
+                        borderColor: '#4caf50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'SQMS月度追蹤個案趨勢',
+                            font: {
+                                size: 18
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 計畫目標圖
+            const planTargetsCtx = document.getElementById('planTargetsChart').getContext('2d');
+            new Chart(planTargetsCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['傳染病衛教', 'M痘宣導', '病毒性肝炎', '工作隊招募', '校園防疫'],
+                    datasets: [
+                        {
+                            label: '目標場次/人數',
+                            data: [20, 8, 3, 25, 2],
+                            backgroundColor: 'rgba(44, 90, 160, 0.2)',
+                            borderColor: '#2c5aa0',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#2c5aa0'
+                        },
+                        {
+                            label: '達成場次/人數',
+                            data: [20, 9, 4, 25, 2],
+                            backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                            borderColor: '#4caf50',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#4caf50'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: '114年來文計畫目標與達成對比',
+                            font: {
+                                size: 18
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 25,
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 宣導成果圖
+            const promotionResultsCtx = document.getElementById('promotionResultsChart').getContext('2d');
+            new Chart(promotionResultsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['傳染病宣導', 'M痘宣導', '病毒性肝炎'],
+                    datasets: [
+                        {
+                            label: '目標場次',
+                            data: [20, 8, 3],
+                            backgroundColor: 'rgba(44, 90, 160, 0.7)'
+                        },
+                        {
+                            label: '完成場次',
+                            data: [20, 9, 4],
+                            backgroundColor: 'rgba(76, 175, 80, 0.7)'
+                        },
+                        {
+                            label: '宣導人次',
+                            data: [14.05, 10.32, 4.21],
+                            backgroundColor: 'rgba(255, 152, 0, 0.7)',
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: '114年宣導成果 (場次/百人次)',
+                            font: {
+                                size: 18
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: '場次',
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '人次 (百人)',
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 調查時間圖
+            const surveyScheduleCtx = document.getElementById('surveyScheduleChart').getContext('2d');
+            new Chart(surveyScheduleCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    datasets: [
+                        {
+                            label: '社區密調',
+                            data: [0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+                            backgroundColor: 'rgba(44, 90, 160, 0.7)'
+                        },
+                        {
+                            label: '校園密調',
+                            data: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                            backgroundColor: 'rgba(76, 175, 80, 0.7)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: '115年登革熱密調作業時間規劃',
+                            font: {
+                                size: 18
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 1.5,
+                            ticks: {
+                                stepSize: 1,
+                                font: {
+                                    size: 14
+                                },
+                                callback: function(value) {
+                                    if (value === 0) return '';
+                                    if (value === 1) return '進行';
+                                    return value;
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+        
+        // 初始顯示
+        updateProgressBar();
+    </script>
+</body>
+</html>
